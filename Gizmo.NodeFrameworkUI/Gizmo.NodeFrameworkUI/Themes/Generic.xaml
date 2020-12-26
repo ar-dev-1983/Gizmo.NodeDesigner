@@ -1,0 +1,18 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/MainWindowStyle.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/NodeToolbox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/NodeCanvas.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/EngineToolBoxItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/EngineToolBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/EngineWrapper.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/VariableWrapper.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/LinkWrapper.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/NodeWrapper.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/DecimalBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/IntegerBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/DoubleBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;Component/Themes/UIntegerBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

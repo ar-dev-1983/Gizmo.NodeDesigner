@@ -1,0 +1,190 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="clr-namespace:Gizmo.WPF;assembly=Gizmo.WPF"
+                    xmlns:local="clr-namespace:Gizmo.NodeFrameworkUI">
+
+    <ui:RoundedCornerConverter x:Key="RoundedCornerConverter"/>
+
+    <Style TargetType="{x:Type local:EngineZoomBox}">
+        <Setter Property="Foreground" Value="{DynamicResource {ComponentResourceKey ui:UITheme, WindowForegroundBrush}}" />
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:EngineZoomBox}">
+                    <Grid>
+                        <TextBlock Text="{TemplateBinding ZoomValue}" VerticalAlignment="Top" HorizontalAlignment="Stretch" TextAlignment="Center" Margin="2"/>
+                        <Canvas Margin="5,25,5,5" Name="PART_ZoomBoxCanvas">
+                            <Canvas.Background>
+                                <VisualBrush Stretch="Uniform" Visual="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Source.Content}" />
+                            </Canvas.Background>
+                            <Thumb Name="PART_MiniatureThumb" Cursor="SizeAll">
+                                <Thumb.Style>
+                                    <Style TargetType="Thumb">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Thumb">
+                                                    <Rectangle StrokeThickness="1" Stroke="{DynamicResource {ComponentResourceKey ui:UITheme, KeySelectBrush}}" Fill="Transparent" />
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Thumb.Style>
+                            </Thumb>
+                        </Canvas>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:EngineToolBox}">
+        <Setter Property="Background" Value="{DynamicResource {ComponentResourceKey ui:UITheme, InactiveWindowBackgroundBrush}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlBorderBrush}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {ComponentResourceKey ui:UITheme, WindowForegroundBrush}}" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:EngineToolBox}">
+                    <Grid Margin="5,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <local:ContentContainer x:Name="Miniature" Opacity="0" IsHitTestVisible="False" BorderThickness="1" Orientation="Bottom"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            <local:ContentContainer.Effect>
+                                <DropShadowEffect Color="{DynamicResource {ComponentResourceKey ui:UITheme, ShadowColor}}" BlurRadius="5" Opacity="1" ShadowDepth="0"/>
+                            </local:ContentContainer.Effect>
+                            <local:EngineZoomBox x:Name="PART_ZoomBox" Width="200" Height="125" Margin="5" IsHitTestVisible="{Binding ElementName=Miniature, Path=IsHitTestVisible}" Source="{TemplateBinding ScrollViewer}"/>
+                        </local:ContentContainer>
+                        <local:ContentContainer x:Name="Settings" Opacity="0" IsHitTestVisible="False" BorderThickness="1" Orientation="Bottom"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            <local:ContentContainer.Effect>
+                                <DropShadowEffect Color="{DynamicResource {ComponentResourceKey ui:UITheme, ShadowColor}}" BlurRadius="5" Opacity="1" ShadowDepth="0"/>
+                            </local:ContentContainer.Effect>
+                            <Grid Width="200" Height="125" IsHitTestVisible="{Binding ElementName=Settings, Path=IsHitTestVisible}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextAlignment="Center" VerticalAlignment="Center" Margin="5" Text="ENGINE SETTINGS" TextDecorations="Underline">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect Color="{DynamicResource {ComponentResourceKey ui:UITheme, ShadowColor}}" BlurRadius="5" Opacity="1" ShadowDepth="0"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                                <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Right" VerticalAlignment="Center" Margin="2" Text="Show Grid:"/>
+                                <TextBlock Grid.Row="2" Grid.Column="0" TextAlignment="Right" VerticalAlignment="Center" Margin="2" Text="Update Interval, ms:"/>
+                                <TextBlock Grid.Row="3" Grid.Column="0" TextAlignment="Right" VerticalAlignment="Center" Margin="2" Text="Link Style:"/>
+                                <ui:UISwitch Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,2" IsChecked="{Binding Path=ShowGrid, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <local:UIntegerBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="5,2" Height="22" Minimum="10" Maximum="1000" Increment="10" CornerRadius="2" ShowControlButtons="True"
+                                                   Value="10"/>
+                                <ui:UIEnumSwitch Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,2" Height="22" CornerRadius="5" SourceEnum="{x:Type local:LinkStyle}" />
+                            </Grid>
+                        </local:ContentContainer>
+                        <StackPanel x:Name="PART_Stack" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <StackPanel.Effect>
+                                <DropShadowEffect Color="{DynamicResource {ComponentResourceKey ui:UITheme, ShadowColor}}" BlurRadius="5" Opacity="1" ShadowDepth="0"/>
+                            </StackPanel.Effect>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <local:EngineToolBoxItem x:Name="PART_ZoomIn" Width="26" Height="26" CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource RoundedCornerConverter},ConverterParameter=left}">
+                                    <ui:GizmoIcon FontSize="16" Icon="{x:Static ui:GizmoIconEnum.ZoomIn}"/>
+                                </local:EngineToolBoxItem>
+                                <local:EngineToolBoxItem x:Name="PART_ZoomOut" Width="26" Height="26">
+                                    <ui:GizmoIcon FontSize="16" Icon="{x:Static ui:GizmoIconEnum.ZoomOut}"/>
+                                </local:EngineToolBoxItem>
+                                <local:EngineToolBoxItem Height="26" Width="26" x:Name="PART_ShowZoomBox" ClickMode="Press"
+                                                         Selected="{Binding Path=IsZoomBoxExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                         CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource RoundedCornerConverter},ConverterParameter=right}">
+                                    <ui:GizmoIcon FontSize="16" Icon="{x:Static ui:GizmoIconEnum.Search}"/>
+                                </local:EngineToolBoxItem>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5,0" VerticalAlignment="Center">
+                                <local:EngineToolBoxItem x:Name="PART_Play"  Width="26" Height="26" CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource RoundedCornerConverter},ConverterParameter=left}" ClickMode="Press">
+                                    <ui:GizmoIcon FontSize="16" Icon="{x:Static ui:GizmoIconEnum.Play}"/>
+                                </local:EngineToolBoxItem>
+                                <local:EngineToolBoxItem  x:Name="PART_Pause"  Width="26" Height="26" ClickMode="Press">
+                                    <ui:GizmoIcon FontSize="16" Icon="{x:Static ui:GizmoIconEnum.Pause}"/>
+                                </local:EngineToolBoxItem>
+                                <local:EngineToolBoxItem x:Name="PART_Step"  Width="26" Height="26" ClickMode="Press">
+                                    <ui:GizmoIcon FontSize="16" Icon="{x:Static ui:GizmoIconEnum.PlayPause}"/>
+                                </local:EngineToolBoxItem>
+                                <local:EngineToolBoxItem  x:Name="PART_Stop"  Width="26" Height="26" CornerRadius="{TemplateBinding CornerRadius, Converter={StaticResource RoundedCornerConverter},ConverterParameter=right}" ClickMode="Press">
+                                    <ui:GizmoIcon FontSize="16" Icon="{x:Static ui:GizmoIconEnum.Stop}"/>
+                                </local:EngineToolBoxItem>
+
+                                <local:EngineToolBoxItem x:Name="PART_Settings" Margin="5,0"  Height="26" Width="26"  ClickMode="Press"
+                                                         Selected="{Binding Path=IsSettingsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                         CornerRadius="{TemplateBinding CornerRadius}">
+                                    <ui:GizmoIcon FontSize="16" Icon="{x:Static ui:GizmoIconEnum.Settings}"/>
+                                </local:EngineToolBoxItem>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsZoomBoxExpanded" Value="True">
+                            <Setter TargetName="Miniature" Property="IsHitTestVisible" Value="True" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Miniature" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Miniature" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsSettingsExpanded" Value="True">
+                            <Setter TargetName="Settings" Property="IsHitTestVisible" Value="True" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Settings" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Settings" Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="Placement" Value="Bottom">
+                            <Setter TargetName="PART_Stack" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="Miniature" Property="Orientation" Value="Top" />
+                            <Setter TargetName="Miniature" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Miniature" Property="Margin" Value="-48,-150,48,15" />
+                            <Setter TargetName="Settings" Property="Orientation" Value="Top" />
+                            <Setter TargetName="Settings" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Settings" Property="Margin" Value="91,-150,-91,15" />
+                        </Trigger>
+                        <Trigger Property="Placement" Value="Top">
+                            <Setter TargetName="PART_Stack" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Miniature" Property="Orientation" Value="Bottom" />
+                            <Setter TargetName="Miniature" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="Miniature" Property="Margin" Value="-48,15,48,-150" />
+                            <Setter TargetName="Settings" Property="Orientation" Value="Bottom" />
+                            <Setter TargetName="Settings" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="Settings" Property="Margin" Value="91,15,-91,-150" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

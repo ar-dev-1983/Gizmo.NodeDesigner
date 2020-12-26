@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="clr-namespace:Gizmo.WPF;assembly=Gizmo.WPF"
+                    xmlns:local="clr-namespace:Gizmo.NodeFrameworkUI">
+
+    <Style TargetType="{x:Type local:EngineToolBoxItem}">
+        <Setter Property="Background" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlBackgroundBrush}}" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Foreground" Value="{DynamicResource {ComponentResourceKey ui:UITheme, WindowForegroundBrush}}" />
+        <Setter Property="Focusable" Value="false" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:EngineToolBoxItem}">
+                    <Grid>
+                        <Border x:Name="PART_Background" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}" BorderThickness="0" BorderBrush="Transparent"/>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <Border x:Name="PART_border" CornerRadius="{TemplateBinding CornerRadius}" Background="Transparent" BorderThickness="0" BorderBrush="{TemplateBinding BorderBrush}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Background" Property="Background" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlHighlightBrush}}" />
+                            <Setter TargetName="PART_border" Property="BorderBrush" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlHighlightBorderBrush}}" />
+                        </Trigger>
+                        <Trigger Property="IsDefault" Value="True">
+                            <Setter TargetName="PART_Background" Property="Opacity" Value="0.5" />
+                            <Setter TargetName="PART_Background" Property="Background" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlSelectBrush}}" />
+                            <Setter TargetName="PART_border" Property="BorderBrush" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlSelectBorderBrush}}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_Background" Property="Opacity" Value="0.7" />
+                            <Setter TargetName="PART_Background" Property="Background" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlSelectBrush}}" />
+                            <Setter TargetName="PART_border" Property="BorderBrush" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlSelectBorderBrush}}" />
+                        </Trigger>
+                        <Trigger Property="Selected" Value="True">
+                            <Setter TargetName="PART_Background" Property="Opacity" Value="1" />
+                            <Setter TargetName="PART_Background" Property="Background" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlSelectBrush}}" />
+                            <Setter TargetName="PART_border" Property="BorderBrush" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlSelectBorderBrush}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

@@ -1,0 +1,16 @@
+﻿<Application x:Class="Gizmo.NodeDesigner.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml"
+             Startup="Application_Startup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Gizmo.WPF;component/Themes/Generic.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Gizmo.NodeFrameworkUI;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <FontFamily x:Key="GizmoIcon">/Resources/Fonts/Gizmo.NodeDesignerIcons.ttf#Gizmo.NodeDesignerIcons</FontFamily>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+

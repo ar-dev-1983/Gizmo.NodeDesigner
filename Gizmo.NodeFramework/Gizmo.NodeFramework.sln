@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gizmo.NodeFramework", "Gizmo.NodeFramework\Gizmo.NodeFramework.csproj", "{752B3959-B953-4643-8447-732172A355AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gizmo.NodeBase", "..\Gizmo.NodeBase\Gizmo.NodeBase\Gizmo.NodeBase.csproj", "{CECCBBD2-0DE1-4DA0-860A-31E1ADCB7FDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{752B3959-B953-4643-8447-732172A355AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{752B3959-B953-4643-8447-732172A355AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{752B3959-B953-4643-8447-732172A355AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{752B3959-B953-4643-8447-732172A355AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CECCBBD2-0DE1-4DA0-860A-31E1ADCB7FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CECCBBD2-0DE1-4DA0-860A-31E1ADCB7FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CECCBBD2-0DE1-4DA0-860A-31E1ADCB7FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CECCBBD2-0DE1-4DA0-860A-31E1ADCB7FDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82D78090-4219-46A9-8684-8F104076F457}
+	EndGlobalSection
+EndGlobal

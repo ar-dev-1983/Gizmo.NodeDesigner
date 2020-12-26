@@ -1,0 +1,77 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ui="clr-namespace:Gizmo.WPF;assembly=Gizmo.WPF"
+                    xmlns:local="clr-namespace:Gizmo.NodeFrameworkUI">
+
+    <Style TargetType="{x:Type local:LinkWrapper}">
+        <Style.Resources>
+            <Style x:Key="ConnectionAdornerThumbStyle" TargetType="{x:Type Thumb}">
+                <Setter Property="Width" Value="12"/>
+                <Setter Property="Height" Value="12"/>
+                <Setter Property="SnapsToDevicePixels" Value="true"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <TranslateTransform X="-6" Y="-6"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Thumb}">
+                            <Rectangle Fill="{DynamicResource {ComponentResourceKey local:UINodeTheme, LinkBorderSelectBrush}}"
+                                       Stroke="{DynamicResource {ComponentResourceKey local:UINodeTheme, LinkBorderSelectBrush}}"
+                                       StrokeThickness="2" RadiusX="10" RadiusY="10">
+                            </Rectangle>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Style.Resources>
+        <Setter Property="BorderBrush" Value="{DynamicResource {ComponentResourceKey local:UINodeTheme, LinkBorderBrush}}"/>
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="ContextMenu" Value="{StaticResource LinkWrapperContextMenu}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:LinkWrapper}">
+                    <Canvas DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+                        <Path Name="PART_ConnectionPath" 
+                              StrokeThickness="2"
+                              Stroke="{TemplateBinding BorderBrush}"
+                              StrokeStartLineCap="Square"
+                              StrokeEndLineCap="Square"
+                              StrokeLineJoin="Round"
+                              SnapsToDevicePixels="true"
+                              Data="{Binding LinkGeometry}">
+                            <Path.Effect>
+                                <DropShadowEffect Color="{DynamicResource {ComponentResourceKey ui:UITheme, ShadowColor}}" BlurRadius="5" Opacity="0.5" ShadowDepth="0"/>
+                            </Path.Effect>
+                        </Path>
+                        <Rectangle Name="PART_ConnectionSource" StrokeThickness="2" Width="10" Margin="-5,-5,0,0" Height="10" IsHitTestVisible="False"
+                                   Stroke="{DynamicResource {ComponentResourceKey local:UINodeTheme, NodeCanvasBackgroundBrush}}"
+                                   Canvas.Left="{Binding AnchorPositionSource.X}"
+                                   Canvas.Top="{Binding AnchorPositionSource.Y}"
+                                   RadiusX="10" RadiusY="10" 
+                                   Fill="{TemplateBinding BorderBrush}"/>
+                        <Rectangle Name="PART_ConnectionDestination" StrokeThickness="2" Width="10" Margin="-5,-5,0,0" Height="10" IsHitTestVisible="False"
+                                   Stroke="{DynamicResource {ComponentResourceKey local:UINodeTheme, NodeCanvasBackgroundBrush}}"
+                                   Canvas.Left="{Binding AnchorPositionDestination.X}"
+                                   Canvas.Top="{Binding AnchorPositionDestination.Y}"
+                                   RadiusX="10" RadiusY="10"
+                                   Fill="{TemplateBinding BorderBrush}">
+                        </Rectangle>
+                    </Canvas>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="BorderBrush" Value="{DynamicResource {ComponentResourceKey local:UINodeTheme, LinkBorderSelectBrush}}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{DynamicResource {ComponentResourceKey local:UINodeTheme, LinkBorderHighlightBrush}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

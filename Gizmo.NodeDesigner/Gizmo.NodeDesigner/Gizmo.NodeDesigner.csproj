@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>net45;net5-windows;</TargetFrameworks>
+    <LangVersion>8.0</LangVersion>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\Icons\AppIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net5-windows' ">
+    <Reference Include="Gizmo.WPF">
+      <HintPath>..\..\..\Gizmo.WPF\Gizmo.WPF\bin\Release\net5-windows\Gizmo.WPF.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="Gizmo.WPF">
+      <HintPath>..\..\..\Gizmo.WPF\Gizmo.WPF\bin\Release\net45\Gizmo.WPF.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\Gizmo.NodeDesignerIcons.ttf" />
+    <None Remove="Resources\Fonts\Gizmo.NodeDesignerIcons.ttf" />
+    <None Remove="Resources\Icons\AppIcon.ico" />
+    <None Remove="Resources\Icons\AppIcon_16.ico" />
+    <None Remove="Resources\Images\Settings.png" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Gizmo.NodeBase\Gizmo.NodeBase\Gizmo.NodeBase.csproj" />
+    <ProjectReference Include="..\..\Gizmo.NodeFrameworkUI\Gizmo.NodeFrameworkUI\Gizmo.NodeFrameworkUI.csproj" />
+    <ProjectReference Include="..\..\Gizmo.NodeFramework\Gizmo.NodeFramework\Gizmo.NodeFramework.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\Gizmo.NodeDesignerIcons.ttf" />
+    <Resource Include="Resources\Icons\AppIcon.ico" />
+    <Resource Include="Resources\Icons\AppIcon_16.ico" />
+    <Resource Include="Resources\Images\Settings.png" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Controls\Converters\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Page Update="Themes\LogMessageIcon.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>
