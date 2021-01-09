@@ -102,7 +102,7 @@
             </ui:UITabPanel.Items>
         </ui:UITabPanel>
 
-        <Menu Height="31" BorderThickness="0" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-2,-31,-1,-2" Grid.ColumnSpan="3" Background="Transparent">
+        <Menu Height="31" BorderThickness="0" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-2,-32,-1,-2" Grid.ColumnSpan="3" Background="Transparent">
             <MenuItem Width="31" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" x:Name="MainFileMenu">
                 <MenuItem.Header>
                     <Image Source="/Resources/Icons/AppIcon.ico" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5" Width="24" Height="24" Stretch="UniformToFill"/>
@@ -134,13 +134,13 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Edit">
+            <MenuItem Header="Edit" BorderThickness="0">
 
             </MenuItem>
-            <MenuItem Header="View">
+            <MenuItem Header="View" BorderThickness="0">
 
             </MenuItem>
-            <MenuItem Header="Settings">
+            <MenuItem Header="Settings" BorderThickness="0">
                 <MenuItem Header="App Settings" Command="{Binding EditSettingsCommand}">
                     <MenuItem.Icon>
                         <ui:GizmoIcon Icon="{x:Static ui:GizmoIconEnum.Settings}" FontSize="16"/>
@@ -162,22 +162,7 @@
                     </MenuItem>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="About"/>
+            <MenuItem Header="About" BorderThickness="0"/>
         </Menu>
-        <ui:UISearchBox x:Name="SearchBox" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="-1,-27,-1,0" Grid.ColumnSpan="100" Collapsible="False"  Width="350" HoldSearchTextAfterHide="False" Watermark=" Search">
-            <ui:UISearchBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="1" Margin="5,0" Text="{Binding Path=Name, Mode=OneWay}" FontWeight="Black" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBlock Grid.Column="2" Margin="5,0" Text="{Binding Path=Description, Mode=OneWay}" FontStyle="Italic" TextAlignment="Right" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-                    </Grid>
-                </DataTemplate>
-            </ui:UISearchBox.ItemTemplate>
-        </ui:UISearchBox>
     </Grid>
 </Window>

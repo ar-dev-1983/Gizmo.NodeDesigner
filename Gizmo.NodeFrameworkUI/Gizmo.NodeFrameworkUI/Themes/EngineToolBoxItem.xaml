@@ -32,11 +32,13 @@
                             <Setter TargetName="PART_Background" Property="Opacity" Value="0.7" />
                             <Setter TargetName="PART_Background" Property="Background" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlSelectBrush}}" />
                             <Setter TargetName="PART_border" Property="BorderBrush" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlSelectBorderBrush}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {ComponentResourceKey ui:UITheme, HighlightForegroundBrush}}" />
                         </Trigger>
                         <Trigger Property="Selected" Value="True">
                             <Setter TargetName="PART_Background" Property="Opacity" Value="1" />
                             <Setter TargetName="PART_Background" Property="Background" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlSelectBrush}}" />
                             <Setter TargetName="PART_border" Property="BorderBrush" Value="{DynamicResource {ComponentResourceKey ui:UITheme, ControlSelectBorderBrush}}" />
+                            <Setter Property="Foreground" Value="{DynamicResource {ComponentResourceKey ui:UITheme, SelectForegroundBrush}}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

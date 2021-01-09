@@ -55,10 +55,7 @@
                     <Border x:Name="PART_Container" BorderThickness="0">
                         <Border x:Name="PART_Border" Width="Auto" Height="Auto" Background="{DynamicResource {ComponentResourceKey ui:UITheme, WindowBackgroundBrush}}" BorderBrush="{DynamicResource {ComponentResourceKey ui:UITheme, WindowBorderBrush}}" BorderThickness="1">
                             <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent">
-                                <Border x:Name="TitleBar" Background="{DynamicResource {ComponentResourceKey ui:UITheme, WindowBorderBrush}}" BorderThickness="0" Margin="-1,-1,-1,1" DockPanel.Dock="Top">
-                                    <Border.Effect>
-                                        <DropShadowEffect Color="{DynamicResource {ComponentResourceKey ui:UITheme, ShadowColor}}" BlurRadius="5" Opacity="0.5" ShadowDepth="1"/>
-                                    </Border.Effect>
+                                <Border x:Name="TitleBar" BorderBrush="{DynamicResource {ComponentResourceKey ui:UITheme, ControlSelectBrush}}" BorderThickness="0,0,0,2" Margin="-1,-1,-1,0" DockPanel.Dock="Top">
                                     <Grid Height="29">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="36" />
